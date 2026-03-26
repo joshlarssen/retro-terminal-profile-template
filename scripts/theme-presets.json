@@ -1,0 +1,68 @@
+{
+  "presets": {
+    "vault-green": {
+      "label": "Vault Green",
+      "description": "Classic phosphor green with the original retro terminal mood.",
+      "theme": {
+        "bgStart": "#030603",
+        "bgEnd": "#050b05",
+        "panel": "rgba(7, 19, 9, 0.94)",
+        "line": "#2f9134",
+        "lineSoft": "rgba(76, 180, 80, 0.22)",
+        "text": "#9dff7b",
+        "textStrong": "#6dff55",
+        "textDim": "#62c964",
+        "textFaint": "#2f6a33",
+        "shadow": "rgba(57, 255, 20, 0.18)"
+      }
+    },
+    "amber-radar": {
+      "label": "Amber Radar",
+      "description": "Warm amber terminal inspired by old monochrome monitors.",
+      "theme": {
+        "bgStart": "#090603",
+        "bgEnd": "#120a04",
+        "panel": "rgba(24, 14, 6, 0.94)",
+        "line": "#ad6b1a",
+        "lineSoft": "rgba(214, 146, 54, 0.2)",
+        "text": "#ffd08a",
+        "textStrong": "#ffb347",
+        "textDim": "#d99541",
+        "textFaint": "#6f4a18",
+        "shadow": "rgba(255, 179, 71, 0.2)"
+      }
+    },
+    "arctic-signal": {
+      "label": "Arctic Signal",
+      "description": "Cold cyan and ice-blue look with a cleaner sci-fi feel.",
+      "theme": {
+        "bgStart": "#02070b",
+        "bgEnd": "#051018",
+        "panel": "rgba(7, 18, 26, 0.94)",
+        "line": "#2e88a6",
+        "lineSoft": "rgba(77, 172, 207, 0.2)",
+        "text": "#a7f3ff",
+        "textStrong": "#6de7ff",
+        "textDim": "#67bdd0",
+        "textFaint": "#2d6170",
+        "shadow": "rgba(109, 231, 255, 0.18)"
+      }
+    },
+    "mono-slate": {
+      "label": "Mono Slate",
+      "description": "Minimal graphite palette with pale neutral highlights.",
+      "theme": {
+        "bgStart": "#050505",
+        "bgEnd": "#0f1112",
+        "panel": "rgba(16, 19, 20, 0.95)",
+        "line": "#7e8a90",
+        "lineSoft": "rgba(139, 153, 160, 0.18)",
+        "text": "#e0ecef",
+        "textStrong": "#f5fbfd",
+        "textDim": "#a8b7bc",
+        "textFaint": "#566267",
+        "shadow": "rgba(210, 226, 232, 0.12)"
+      }
+    }
+  }
+}

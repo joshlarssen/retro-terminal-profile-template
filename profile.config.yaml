@@ -1,0 +1,207 @@
+owner: your-github-username
+name: Your Name
+brandKicker: Open Source Profile Template
+siteTitle: Your Name // Retro Terminal Profile
+footerNote: customize this footer in profile.config.yaml
+themePreset: arctic-signal
+
+teaserGif:
+  stepDelayMs: 1400
+
+crtEffects:
+  enabled: true
+  scanlines: true
+
+modules:
+  - id: stack
+    label: stack
+    sidebarTitle: core stack
+    items:
+      - id: typescript
+        label: TypeScript
+        eyebrow: core language
+        title: TypeScript
+        subtitle: Product UI, tooling, and typed application work
+        tag: LANGUAGE
+        core: ts
+        copy: "Use this slot to explain what TypeScript represents in your work: product features, internal tools, design systems, browser apps, or platform interfaces."
+        bullets:
+          - Frontend and full-stack application work
+          - Internal tooling and developer workflows
+          - Great for showing typed product engineering
+      - id: python
+        label: Python
+        eyebrow: core language
+        title: Python
+        subtitle: Automation, CLIs, and backend-oriented workflows
+        tag: LANGUAGE
+        core: py
+        copy: "A good place to summarize automation, scripts, backend services, data pipelines, or test infrastructure you regularly build."
+        bullets:
+          - Automation and platform glue
+          - Tooling, scripts, and service integration
+          - Strong signal for practical engineering work
+      - id: platform
+        label: Platform
+        eyebrow: supporting layer
+        title: Platform
+        subtitle: CI/CD, containers, cloud, and delivery systems
+        tag: PLATFORM
+        core: pf
+        copy: "Use one item for the operational side of your profile: CI pipelines, infrastructure, observability, Kubernetes, Docker, or release engineering."
+        bullets:
+          - Deployment and delivery awareness
+          - Platform and runtime fluency
+          - Useful context for production-minded work
+      - id: quality
+        label: Quality
+        eyebrow: engineering focus
+        title: Quality
+        subtitle: Testing strategy, reliability, and feedback loops
+        tag: QUALITY
+        core: qa
+        copy: "This section works well for QA, test automation, quality engineering, or any discipline focused on confidence and release safety."
+        bullets:
+          - Test strategy and release confidence
+          - Faster feedback loops for teams
+          - Reliability as a visible product value
+
+  - id: builds
+    label: builds
+    sidebarTitle: featured work
+    items:
+      - id: profile-template
+        label: profile-template
+        eyebrow: open source
+        title: Retro Terminal Profile
+        subtitle: Template repo that powers this exact experience
+        tag: TEMPLATE
+        core: rt
+        copy: "Use one featured slot for the profile system itself if you want your README to explain its own source, theme system, or export flow."
+        bullets:
+          - YAML-driven content and theme presets
+          - Local preview plus GIF export
+          - Easy to fork and adapt
+      - id: internal-toolkit
+        label: internal-toolkit
+        eyebrow: featured build
+        title: Internal Toolkit
+        subtitle: A reusable engineering project or workflow hub
+        tag: TOOLING
+        core: it
+        copy: "Replace this with a repo, product, framework, or internal platform effort you want visitors to notice first."
+        bullets:
+          - Represents one meaningful body of work
+          - Good place for tooling or platform projects
+          - Easy to swap for a public repo link later
+      - id: design-system
+        label: design-system
+        eyebrow: featured build
+        title: Design System
+        subtitle: Shared UI patterns, components, or brand tooling
+        tag: SYSTEM
+        core: ds
+        copy: "This sample item gives non-automation profiles a balanced second project. Replace it with something that fits your actual focus."
+        bullets:
+          - Works for frontend or product profiles
+          - Can become any second featured project
+          - Keeps the default template visually balanced
+
+  - id: profile
+    label: profile
+    sidebarTitle: profile angle
+    items:
+      - id: engineering-style
+        label: engineering-style
+        eyebrow: positioning
+        title: Engineering Style
+        subtitle: How you like to build, ship, and collaborate
+        tag: MODE
+        core: md
+        copy: "Use this slot for your operating style: product-minded, platform-focused, quality-first, fast prototyping, systems thinking, or DX-driven work."
+        bullets:
+          - Explains how you approach engineering
+          - Keeps the profile personal without becoming a CV
+          - Helps visitors understand your angle quickly
+      - id: current-focus
+        label: current-focus
+        eyebrow: right now
+        title: Current Focus
+        subtitle: What you are exploring, building, or improving next
+        tag: NOW
+        core: nw
+        copy: "This is useful for showing what matters right now: shipping better DX, modernizing infrastructure, building AI tools, improving reliability, or polishing product surfaces."
+        bullets:
+          - Signals momentum and direction
+          - Easy to refresh regularly
+          - Keeps the page feeling alive
+
+  - id: links
+    label: links
+    sidebarTitle: destinations
+    items:
+      - id: github
+        label: GitHub
+        eyebrow: primary link
+        title: GitHub
+        subtitle: Public code, experiments, and profile entry point
+        tag: LIVE
+        core: gh
+        handle: "@your-github-username"
+        href: https://github.com/your-github-username
+        hrefLabel: github.com/your-github-username
+        copy: "Point this to the account you want visitors to explore first."
+        bullets:
+          - Usually the best anchor for the profile
+          - Easy to keep as the first visible link
+          - Works with the auto-detected GitHub icon
+      - id: website
+        label: Website
+        eyebrow: optional link
+        title: Personal Website
+        subtitle: Portfolio, blog, or landing page
+        tag: WEB
+        core: web
+        href: https://your-site.dev
+        hrefLabel: your-site.dev
+        copy: "Use this slot for a portfolio, blog, product page, or any home base outside GitHub."
+        bullets:
+          - Good second destination for your profile
+          - Works for a portfolio or studio page
+          - Auto-detects the generic website icon
+      - id: linkedin
+        label: LinkedIn
+        eyebrow: optional link
+        title: LinkedIn
+        subtitle: Professional background and network
+        tag: SOCIAL
+        core: in
+        href: https://www.linkedin.com/in/your-handle/
+        hrefLabel: linkedin.com/in/your-handle
+        handle: your-handle
+        copy: "If you want a more traditional professional touchpoint, keep LinkedIn here. If not, replace it with any other social or project link."
+        bullets:
+          - Easy to swap with another destination
+          - Uses the LinkedIn icon automatically
+          - Optional if you want the profile to stay GitHub-first
+
+signals:
+  - label: years building
+    value: X+
+  - label: featured builds
+    value: 03
+  - label: current mode
+    value: shipping
+  - label: availability
+    value: open
+
+links:
+  - label: GitHub
+    href: https://github.com/your-github-username
+    hrefLabel: github.com/your-github-username
+  - label: Website
+    href: https://your-site.dev
+    hrefLabel: your-site.dev
+  - label: LinkedIn
+    href: https://www.linkedin.com/in/your-handle/
+    hrefLabel: linkedin.com/in/your-handle

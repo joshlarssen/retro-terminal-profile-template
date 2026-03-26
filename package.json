@@ -1,0 +1,19 @@
+{
+  "name": "retro-terminal-profile-template",
+  "description": "YAML-driven retro terminal GitHub profile template with local preview and GIF export",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "postinstall": "node scripts/ensure-playwright-browser.mjs",
+    "config": "node scripts/run-sync-config.mjs && node scripts/generate-social-icons.mjs && node scripts/generate-config-docs.mjs",
+    "dev": "npm run config && node scripts/dev-server.mjs",
+    "export": "npm run config && node scripts/generate-static.mjs && node scripts/generate-teaser-gif.mjs && node scripts/sync-public-profile-assets.mjs"
+  },
+  "devDependencies": {
+    "gifenc": "^1.0.3",
+    "playwright": "^1.58.2",
+    "pngjs": "^7.0.0",
+    "simple-icons": "^16.13.0"
+  }
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro Terminal Profile</title>
+    <meta
+      name="description"
+      content="Interactive retro terminal profile with a static export for GitHub profile integration."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <div class="shell-surface">
+        <div class="shell-content">
+          <header class="topbar">
+            <div class="brand">
+              <span class="brand-led"></span>
+              <div>
+                <p id="brand-kicker" class="brand-kicker">interactive profile</p>
+                <h1 id="site-title" class="brand-title">retro terminal</h1>
+              </div>
+            </div>
+
+            <nav id="module-tabs" class="module-tabs" aria-label="Profile modules"></nav>
+          </header>
+
+          <main class="screen">
+            <aside class="sidebar">
+              <div class="sidebar-header">
+                <p class="eyebrow">module items</p>
+                <h2 id="sidebar-title" class="sidebar-title">skills</h2>
+              </div>
+
+              <div id="item-list" class="item-list" role="listbox" aria-label="Module entries"></div>
+            </aside>
+
+            <section class="panel">
+              <div class="panel-frame">
+                <div class="panel-meta">
+                  <div>
+                    <p id="panel-eyebrow" class="eyebrow"></p>
+                    <h2 id="panel-title" class="panel-title"></h2>
+                    <p id="panel-subtitle" class="panel-subtitle"></p>
+                  </div>
+
+                  <div id="panel-tag" class="panel-tag"></div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="detail-block">
+                    <p id="panel-copy" class="panel-copy"></p>
+                    <div id="panel-links" class="panel-links"></div>
+                    <ul id="panel-bullets" class="panel-bullets"></ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+
+          <section class="dock">
+            <div>
+              <p class="eyebrow">signals</p>
+              <div id="signal-cards" class="signal-cards"></div>
+            </div>
+
+            <div>
+              <p class="eyebrow">links</p>
+              <div id="link-pills" class="link-pills"></div>
+            </div>
+          </section>
+
+          <footer class="footer">
+            <span id="footer-note"></span>
+          </footer>
+        </div>
+
+        <div class="crt"></div>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

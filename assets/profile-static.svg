@@ -1,0 +1,711 @@
+<svg width="1200" height="940" viewBox="0 0 1200 940" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="940" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#02070b" />
+              <stop offset="1" stop-color="#051018" />
+            </linearGradient>
+            <pattern id="scan" width="6" height="6" patternUnits="userSpaceOnUse">
+              <rect width="6" height="3" fill="#6de7ff" opacity="0.08" />
+            </pattern>
+            <style><![CDATA[
+        :root {
+  color-scheme: dark;
+  --shell-width: 1136px;
+  --shell-height: 876px;
+  --topbar-height: 112px;
+  --screen-height: 534px;
+  --dock-height: 176px;
+  --footer-height: 54px;
+  --bg-start: #030603;
+  --bg-end: #050b05;
+  --panel: rgba(7, 19, 9, 0.94);
+  --line: #2f9134;
+  --line-soft: rgba(76, 180, 80, 0.22);
+  --text: #9dff7b;
+  --text-strong: #6dff55;
+  --text-dim: #62c964;
+  --text-faint: #2f6a33;
+  --shadow: color-mix(in srgb, var(--text-strong) 18%, transparent);
+  --surface-glow: color-mix(in srgb, var(--text-strong) 8%, transparent);
+  --crt-screen-radius: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  background:
+    radial-gradient(circle at top, color-mix(in srgb, var(--text-strong) 15%, transparent), transparent 32%),
+    linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  color: var(--text);
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.crt {
+  position: absolute;
+  inset: 0;
+  display: none;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: var(--crt-screen-radius);
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08) 0 1px,
+    rgba(0, 0, 0, 0.1) 1px 2px,
+    rgba(0, 0, 0, 0.26) 2px 3px
+  );
+  background-size: 100% 3px;
+  mix-blend-mode: screen;
+  opacity: 0.58;
+}
+
+.crt::before,
+.crt::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.shell {
+  width: min(100%, var(--shell-width));
+  max-width: var(--shell-width);
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  isolation: isolate;
+  transform-origin: center top;
+  border-radius: 0;
+  overflow: visible;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.shell-surface {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--crt-screen-radius);
+  overflow: hidden;
+  transform-origin: center center;
+  background:
+    radial-gradient(125% 78% at 50% -8%, rgba(255, 255, 255, 0.08), transparent 42%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--panel) 100%, var(--bg-start)),
+      color-mix(in srgb, var(--panel) 92%, var(--bg-start))
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 0 92px rgba(0, 0, 0, 0.16),
+    inset 0 0 28px color-mix(in srgb, var(--text-strong) 9%, transparent);
+}
+
+.shell-content {
+  position: relative;
+  z-index: 1;
+  transform-origin: center center;
+}
+
+.shell-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+.has-crt-effects .crt {
+  display: block;
+}
+
+.has-crt-scanlines .crt {
+  opacity: 0.58;
+}
+
+.has-crt-effects:not(.has-crt-scanlines) .crt {
+  background: none;
+  opacity: 0;
+}
+
+.has-crt-scanlines .crt::before {
+  background: none;
+  opacity: 0;
+}
+
+.has-crt-scanlines .crt::after {
+  background: none;
+  opacity: 0;
+}
+
+.topbar,
+.screen,
+.dock,
+.footer {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--panel) 96%, var(--bg-start));
+  box-shadow: 0 0 22px var(--shadow), inset 0 0 0 1px color-mix(in srgb, var(--text-strong) 12%, transparent);
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  height: var(--topbar-height);
+  padding: 18px 22px;
+  border-radius: 18px 18px 0 0;
+}
+
+.brand {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  min-width: 0;
+}
+
+.brand > div {
+  min-width: 0;
+}
+
+.brand-led {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--text-strong);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--text-strong) 85%, transparent);
+}
+
+.brand-kicker,
+.eyebrow {
+  margin: 0;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+}
+
+.brand-title,
+.sidebar-title,
+.panel-title {
+  margin: 2px 0 0;
+  color: var(--text-strong);
+}
+
+.brand-title {
+  max-width: 100%;
+  font-size: clamp(1.15rem, 2.1vw, 1.72rem);
+  line-height: 1.15;
+}
+
+.module-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  justify-content: flex-end;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.module-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-button,
+.item-button {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--panel) 82%, var(--bg-start));
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  transition: 140ms ease;
+  text-decoration: none;
+}
+
+.tab-button {
+  flex: 0 0 auto;
+  padding: 10px 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+}
+
+.tab-button:hover,
+.tab-button:focus-visible,
+.tab-button.is-active,
+.item-button:hover,
+.item-button:focus-visible,
+.item-button.is-active {
+  background: var(--text-strong);
+  color: var(--bg-start);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--text-strong) 26%, transparent);
+  outline: none;
+}
+
+.screen {
+  display: grid;
+  grid-template-columns: minmax(250px, 320px) minmax(0, 1fr);
+  gap: 18px;
+  height: var(--screen-height);
+  padding: 18px;
+  border-top: none;
+}
+
+.sidebar,
+.panel-frame,
+.dock {
+  border: 1px solid var(--line-soft);
+}
+
+.sidebar {
+  min-height: 0;
+  padding: 18px;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--panel) 78%, var(--bg-start)),
+      color-mix(in srgb, var(--bg-start) 88%, var(--panel))
+    ),
+    linear-gradient(180deg, transparent, color-mix(in srgb, var(--text-strong) 4%, transparent));
+  overflow: hidden;
+}
+
+.item-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  max-height: calc(100% - 56px);
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+}
+
+.item-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px;
+}
+
+.item-button__index {
+  color: var(--text-faint);
+}
+
+.item-button.is-active .item-button__index {
+  color: color-mix(in srgb, var(--bg-start) 75%, transparent);
+}
+
+.panel-frame {
+  height: 100%;
+  padding: 22px;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--panel) 92%, var(--bg-start)),
+      color-mix(in srgb, var(--bg-start) 92%, black)
+    ),
+    linear-gradient(90deg, transparent, color-mix(in srgb, var(--text-strong) 3%, transparent), transparent);
+  overflow: hidden;
+}
+
+.panel-meta {
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.panel-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+}
+
+.panel-subtitle,
+.panel-copy {
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.panel-subtitle {
+  margin: 12px 0 0;
+  max-width: 34rem;
+}
+
+.panel-tag {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+}
+
+.panel-body {
+  margin-top: 28px;
+  height: calc(100% - 118px);
+}
+
+.panel-copy {
+  margin: 0;
+  max-width: 52rem;
+  font-size: 1.02rem;
+}
+
+.panel-links[hidden] {
+  display: none;
+}
+
+.panel-links {
+  margin-top: 18px;
+}
+
+.panel-link-line,
+.panel-link-anchor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.panel-link-value,
+.panel-link-anchor,
+.link-pill__meta {
+  color: var(--text-strong);
+  word-break: break-word;
+}
+
+.panel-link-anchor:hover,
+.panel-link-anchor:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+.social-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
+  color: var(--text-dim);
+}
+
+.detail-block {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+}
+
+.panel-bullets {
+  margin: 18px 0 0;
+  padding-left: 18px;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.dock {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 18px;
+  height: var(--dock-height);
+  margin-top: 18px;
+  padding: 18px 20px;
+  border-top: none;
+}
+
+.signal-cards {
+  display: grid;
+  grid-template-columns: repeat(var(--signal-count, 1), minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.signal-card {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--line-soft);
+  background: color-mix(in srgb, var(--panel) 76%, var(--bg-start));
+}
+
+.signal-card strong {
+  display: block;
+  color: var(--text-strong);
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.signal-card span {
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.link-pills {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.link-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-strong);
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.link-pill:hover,
+.link-pill:focus-visible {
+  color: var(--text);
+  outline: none;
+}
+
+.link-pill__meta {
+  font-size: 0.92rem;
+  word-break: break-word;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: var(--footer-height);
+  padding: 12px 18px;
+  border-top: none;
+  border-radius: 0 0 18px 18px;
+  color: var(--text-dim);
+}
+
+.footer-separator {
+  color: var(--text-faint);
+}
+
+@media (max-width: 960px) {
+  :root {
+    --topbar-height: auto;
+    --screen-height: auto;
+    --dock-height: auto;
+    --footer-height: auto;
+  }
+
+  .topbar,
+  .screen,
+  .dock {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .module-tabs {
+    justify-content: flex-start;
+  }
+
+  .panel-meta {
+    display: grid;
+  }
+
+  .item-list,
+  .detail-block {
+    max-height: none;
+    height: auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .link-pills {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
+  .signal-cards {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .shell {
+    padding: 14px 10px 24px;
+  }
+
+  .topbar,
+  .screen,
+  .dock,
+  .panel-frame,
+  .sidebar {
+    padding: 14px;
+  }
+}
+
+        .page, .page * {
+          box-sizing: border-box;
+        }
+
+        .page {
+          width: 1136px;
+          height: 876px;
+          color: var(--text);
+          font-family: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+        }
+
+        .page .crt {
+          display: none;
+        }
+
+        .page .shell {
+          max-width: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .page .tab-button,
+        .page .item-button,
+        .page .link-pill {
+          cursor: default;
+        }
+
+        .page .link-pill {
+          pointer-events: none;
+        }
+        ]]></style>
+          </defs>
+
+          <rect x="14" y="14" width="1172" height="912" rx="18" fill="url(#bg)" stroke="#6de7ff" stroke-width="2" />
+          <rect x="28" y="28" width="1144" height="884" rx="14" fill="#02070b" stroke="#2e88a6" stroke-width="1.5" />
+          <rect x="28" y="28" width="1144" height="884" rx="14" fill="url(#scan)" opacity="0.85" />
+
+          <foreignObject x="32" y="32" width="1136" height="876">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="page" style="--bg-start:#02070b;--bg-end:#051018;--panel:rgba(7, 18, 26, 0.94);--line:#2e88a6;--line-soft:rgba(77, 172, 207, 0.2);--text:#a7f3ff;--text-strong:#6de7ff;--text-dim:#67bdd0;--text-faint:#2d6170;--shadow:rgba(109, 231, 255, 0.18)">
+              <div class="shell">
+                <div class="shell-surface">
+                  <div class="shell-content">
+                    <header class="topbar">
+                      <div class="brand">
+                        <span class="brand-led"></span>
+                        <div>
+                          <p class="brand-kicker">Open Source Profile Template</p>
+                          <h1 class="brand-title">Your Name // Retro Terminal Profile</h1>
+                        </div>
+                      </div>
+
+                      <nav class="module-tabs"><div class="tab-button is-active">stack</div><div class="tab-button">builds</div><div class="tab-button">profile</div><div class="tab-button">links</div></nav>
+                    </header>
+
+                    <main class="screen">
+                      <aside class="sidebar">
+                        <div class="sidebar-header">
+                          <p class="eyebrow">module items</p>
+                          <h2 class="sidebar-title">core stack</h2>
+                        </div>
+
+                        <div class="item-list">
+                <div class="item-button is-active">
+                  <span>TypeScript</span>
+                  <span class="item-button__index">01</span>
+                </div>
+              
+                <div class="item-button">
+                  <span>Python</span>
+                  <span class="item-button__index">02</span>
+                </div>
+              
+                <div class="item-button">
+                  <span>Platform</span>
+                  <span class="item-button__index">03</span>
+                </div>
+              
+                <div class="item-button">
+                  <span>Quality</span>
+                  <span class="item-button__index">04</span>
+                </div>
+              </div>
+                      </aside>
+
+                      <section class="panel">
+                        <div class="panel-frame">
+                          <div class="panel-meta">
+                            <div>
+                              <p class="eyebrow">core language</p>
+                              <h2 class="panel-title">TypeScript</h2>
+                              <p class="panel-subtitle">Product UI, tooling, and typed application work</p>
+                            </div>
+
+                            <div class="panel-tag">LANGUAGE</div>
+                          </div>
+
+                          <div class="panel-body">
+                            <div class="detail-block">
+                              <p class="panel-copy">Use this slot to explain what TypeScript represents in your work: product features, internal tools, design systems, browser apps, or platform interfaces.</p>
+                              
+                              <ul class="panel-bullets"><li>Frontend and full-stack application work</li><li>Internal tooling and developer workflows</li><li>Great for showing typed product engineering</li></ul>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    </main>
+
+                    <section class="dock">
+                      <div>
+                        <p class="eyebrow">signals</p>
+                        <div class="signal-cards" style="--signal-count:4">
+                <article class="signal-card">
+                  <strong>X+</strong>
+                  <span>years building</span>
+                </article>
+              
+                <article class="signal-card">
+                  <strong>3</strong>
+                  <span>featured builds</span>
+                </article>
+              
+                <article class="signal-card">
+                  <strong>shipping</strong>
+                  <span>current mode</span>
+                </article>
+              
+                <article class="signal-card">
+                  <strong>open</strong>
+                  <span>availability</span>
+                </article>
+              </div>
+                      </div>
+
+                      <div>
+                        <p class="eyebrow">links</p>
+                        <div class="link-pills"><div class="link-pill">
+    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+    </svg>
+  <span class="link-pill__meta">github.com/your-github-username</span></div><div class="link-pill">
+      <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12h18"></path><path d="M12 3c2.9 2.8 4.5 5.8 4.5 9s-1.6 6.2-4.5 9c-2.9-2.8-4.5-5.8-4.5-9S9.1 5.8 12 3Z"></path><path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18Z"></path>
+      </svg>
+    <span class="link-pill__meta">your-site.dev</span></div><div class="link-pill">
+      <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4.5A1.5 1.5 0 0 1 5.5 3h13A1.5 1.5 0 0 1 20 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5v-15Z"></path><path d="M8 10v6"></path><path d="M8 7.5h.01"></path><path d="M11 10v6"></path><path d="M11 12.2a2.2 2.2 0 0 1 4.4 0V16"></path>
+      </svg>
+    <span class="link-pill__meta">linkedin.com/in/your-handle</span></div></div>
+                      </div>
+                    </section>
+
+                    <footer class="footer">
+                      <span>customize this footer in profile.config.yaml</span>
+                      <span class="footer-separator">/</span>
+                      <span>static view generated from shared data</span>
+                    </footer>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </foreignObject>
+        </svg>
