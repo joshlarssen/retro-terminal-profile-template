@@ -81,7 +81,8 @@ Recommended flow:
 2. commit the generated files
 3. push the repo
 4. in GitHub, enable **Settings > Pages**
-5. deploy from `main` / root
+5. keep **Source** on GitHub Actions
+6. let `.github/workflows/deploy-pages.yml` publish the site
 
 Notes:
 
@@ -89,6 +90,8 @@ Notes:
 - if it is a normal repo, Pages serves it at `https://your-github-username.github.io/repo-name/`
 - rerun `npm run config` before pushing config changes so Pages always gets fresh generated data
 - `npm run export` is still useful for the GIF used in your public profile README
+
+This repo now includes a ready-to-use GitHub Actions workflow for Pages deployment.
 
 ## Before you publish your fork
 
@@ -172,3 +175,14 @@ Avoid disabling TLS verification globally.
 ## License
 
 MIT. See `LICENSE`.
+
+## First release tag
+
+For the first public release, I’d recommend:
+
+```bash
+git tag -a v1.0.0 -m "Initial open-source template release"
+git push origin v1.0.0
+```
+
+That gives you a clean baseline for future improvements.

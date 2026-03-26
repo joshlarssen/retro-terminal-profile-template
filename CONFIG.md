@@ -30,7 +30,8 @@ Recommended setup:
 1. run `npm run config`
 2. commit the generated files
 3. push the repo
-4. enable GitHub Pages from `main` / root
+4. enable GitHub Pages with GitHub Actions as the source
+5. let `.github/workflows/deploy-pages.yml` deploy the static site
 
 If the repo is named `your-github-username.github.io`, the app is served at the root domain. Otherwise it is served under the repo path.
 
@@ -235,3 +236,10 @@ node node_modules\playwright\cli.js install chromium
 ## License
 
 MIT. See `LICENSE`.
+
+## First tag suggestion
+
+```bash
+git tag -a v1.0.0 -m "Initial open-source template release"
+git push origin v1.0.0
+```
