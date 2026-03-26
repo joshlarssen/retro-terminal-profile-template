@@ -8,7 +8,8 @@
     "postinstall": "node scripts/ensure-playwright-browser.mjs",
     "config": "node scripts/run-sync-config.mjs && node scripts/generate-social-icons.mjs && node scripts/generate-config-docs.mjs",
     "dev": "npm run config && node scripts/dev-server.mjs",
-    "export": "npm run config && node scripts/generate-static.mjs && node scripts/generate-teaser-gif.mjs && node scripts/sync-public-profile-assets.mjs"
+    "export": "npm run config && node scripts/generate-static.mjs && node scripts/generate-teaser-gif.mjs && node scripts/sync-public-profile-assets.mjs",
+    "showcase": "node scripts/generate-readme-showcase.mjs"
   },
   "devDependencies": {
     "gifenc": "^1.0.3",

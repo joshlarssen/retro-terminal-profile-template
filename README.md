@@ -43,6 +43,31 @@ Everything else is generated or implementation code.
 - `npm run config` syncs the YAML, rebuilds generated artifacts, and regenerates `CONFIG.md`
 - `npm run dev` runs config first, then starts the local preview server
 - `npm run export` runs config, regenerates export assets, then tries to sync the public GIF teaser to your GitHub profile repo
+- `npm run showcase` regenerates the README preview GIFs for themes and timing examples
+
+## Theme preset previews
+
+| Vault Green | Amber Radar |
+| --- | --- |
+| <img src="./assets/readme/theme-vault-green.gif" alt="Vault Green theme preview" width="100%" /> | <img src="./assets/readme/theme-amber-radar.gif" alt="Amber Radar theme preview" width="100%" /> |
+
+| Arctic Signal | Mono Slate |
+| --- | --- |
+| <img src="./assets/readme/theme-arctic-signal.gif" alt="Arctic Signal theme preview" width="100%" /> | <img src="./assets/readme/theme-mono-slate.gif" alt="Mono Slate theme preview" width="100%" /> |
+
+All four previews use the same sample content and the same `stepDelayMs: 1400`, so the palette is the only thing that changes.
+
+## GIF timing previews
+
+| `700 ms` | `1400 ms` | `2400 ms` |
+| --- | --- | --- |
+| <img src="./assets/readme/timing-700ms.gif" alt="GIF timing preview at 700 milliseconds" width="100%" /> | <img src="./assets/readme/timing-1400ms.gif" alt="GIF timing preview at 1400 milliseconds" width="100%" /> | <img src="./assets/readme/timing-2400ms.gif" alt="GIF timing preview at 2400 milliseconds" width="100%" /> |
+
+- `700 ms` = fast
+- `1400 ms` = balanced
+- `2400 ms` = slow and more readable
+
+These showcase assets can be refreshed anytime with `npm run showcase`.
 
 ## Hosting the interactive app on GitHub Pages
 

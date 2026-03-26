@@ -15,6 +15,7 @@ This template is driven by one main content file:
 - `npm run config` — sync YAML, generate browser data, rebuild icon data, regenerate this guide
 - `npm run dev` — run config first, then start the local preview server
 - `npm run export` — run config, regenerate local export assets, then try to sync the public GIF teaser to the profile repo
+- `npm run showcase` — regenerate the README showcase GIFs for theme and timing previews
 
 `npm install` provisions the Playwright browser locally for this project, and `npm run export` re-checks it automatically if needed.
 
@@ -146,6 +147,19 @@ crtEffects:
 - `scanlines` — fixed horizontal lines over the screen
 
 There is no vignette, distortion, or flicker anymore.
+
+## README showcase previews
+
+The README includes generated GIF previews for:
+
+- every bundled theme preset
+- representative GIF timings (`700`, `1400`, and `2400` ms)
+
+Refresh those assets with:
+
+```bash
+npm run showcase
+```
 
 ## Minimal starter example
 
